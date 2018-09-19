@@ -1,0 +1,24 @@
+{
+  "name": "pg-intro",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reesewesterhoff/pg-intro.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reesewesterhoff/pg-intro/issues"
+  },
+  "homepage": "https://github.com/reesewesterhoff/pg-intro#readme",
+  "dependencies": {
+    "pg": "^7.4.3"
+  }
+}
