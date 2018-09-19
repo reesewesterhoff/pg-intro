@@ -1,4 +1,9 @@
 const pg = require('pg');
+const express = require('express');
+
+const app = express();
+
+const PORT = process.env.PORT || 5000;
 
 const Pool = pg.Pool;
 
@@ -15,12 +20,20 @@ pool.on('connect', () => {
 });
 
 pool.on('error', (error) => {
-    console.log('error with postgres pool', error);  
+    console.log('error with postgres pool', error);
 });
 
-pool.query('SELECT * FROM "shoes";')
-    .then((results) => {
-        console.log(results.rows);
-    }).catch((error) => {
-        console.log('error with SQL select for shoes', error);
-    });
+app.get('/shoes', (req, res) => {
+    pool.query('SELECT * FROM "shoes";')
+        .then((results) => {
+            res.send(results.rows);
+            console.log(results.rows);
+        }).catch((error) => {
+            console.log('error with SQL select for shoes', error);
+            res.sendStatus(500);
+        });
+});
+
+app.listen(PORT, () => {
+    console.log('server up on port', PORT);
+});
